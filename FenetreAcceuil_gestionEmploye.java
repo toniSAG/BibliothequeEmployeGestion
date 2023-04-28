@@ -5,10 +5,7 @@ import java.awt.event.*;
 import java.util.LinkedList;
 
 public class FenetreAcceuil_gestionEmploye extends JFrame implements ActionListener{
-    JButton Employes;
-    JButton Temps;
-    JButton Salaire;
-    JButton CloseBTN;
+    JButton Employes, Temps, Salaire, CloseBTN;
     JPanel Conteneur;
     private Fenetre_effectifEmploye F1;
     private Fenetre_gestionTemps F2;
@@ -34,28 +31,39 @@ public class FenetreAcceuil_gestionEmploye extends JFrame implements ActionListe
         Salaire.setBounds(295, 380, 200, 50);
         Salaire.addActionListener(this);
 
+        CloseBTN = new JButton("Fermer la fenêtre");
+        CloseBTN.setBounds(295, 460, 200, 50);
+        CloseBTN.addActionListener(this);
+
         Conteneur = new JPanel();
         Conteneur.setLayout(null);
         Conteneur.setBounds(0, 0, 795, 600);
         Conteneur.add(Employes);
         Conteneur.add(Temps);
         Conteneur.add(Salaire);
+        Conteneur.add(CloseBTN);
         add(Conteneur);
 
         setVisible(true);
     }
 
-    public void actionPerformed(ActionEvent e){
-        if(e.getSource() == Employes){
+    public void actionPerformed(ActionEvent i){
+    
+        if(i.getSource() == Employes){
             Fenetre_effectifEmploye maFenetre_effectifEmploye = new Fenetre_effectifEmploye();
         }
-
-        if(e.getSource() == Temps){
+    
+        if(i.getSource() == Temps){
             Fenetre_gestionTemps maFenetre_gestionTemps = new Fenetre_gestionTemps();
         }
 
-        if(e.getSource() == Salaire){
+        if(i.getSource() == Salaire){
             Fenetre_gestionSalaire maFenetre_gestionSalaire = new Fenetre_gestionSalaire();
         }
+
+        if(i.getSource() == CloseBTN){
+            setVisible(false);
+        }
+    
     }
 }

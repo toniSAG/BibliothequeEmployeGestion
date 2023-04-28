@@ -1,43 +1,48 @@
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.event.*;
 import java.util.LinkedList;
 import java.sql.*;
 
+
 public class Form_ajoutEmploye extends JFrame implements ActionListener{
     JLabel JlNom, JlPrenom, JlFonction;
-    JTextField txtNom, txtPrenom, txtFonction;
+    JTextField txtNom, txtPrenom, txtFonction; 
     JButton SaveBTN, ClearBTN;
     JPanel Conteneur;
+    private JComboBox<String> listeFonction;
 
     public Form_ajoutEmploye(){
         setTitle("Formulaire d'ajout");
-        setSize(800, 600);
+        setSize(600, 300);
         setLocation(300, 80);
-        setLayout(new GridLayout(10, 12));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JlNom = new JLabel("Nom :");
-        txtNom = new JTextField(20);
+        txtNom = new JTextField(10);
         JlPrenom = new JLabel("Prenom :");
-        txtPrenom = new JTextField(3);
+        txtPrenom = new JTextField(10);
         JlFonction = new JLabel("Fonction :");
-        txtFonction = new JTextField(10);
+
+
+        listeFonction = new JComboBox<>(new String[]{"", "Directeur", "Responsable d'équipe", "Bibliothécaire", "Documentaliste"});
+        listeFonction.addActionListener(this);
 
         SaveBTN = new JButton("Enregistrer :");
         SaveBTN.addActionListener(this);
-        ClearBTN = new JButton("Effacer");
+        ClearBTN = new JButton("Annuler");
         ClearBTN.addActionListener(this);
 
-        Conteneur = new JPanel(/*new GridLayout(4, 2)*/);
+        JPanel Conteneur = new JPanel();
+        Conteneur.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
         Conteneur.add(JlNom);
         Conteneur.add(txtNom);
         Conteneur.add(JlPrenom);
         Conteneur.add(txtPrenom);
         Conteneur.add(JlFonction);
-        Conteneur.add(txtFonction);
+        Conteneur.add(listeFonction);
         Conteneur.add(SaveBTN);
+        Conteneur.add(ClearBTN);
         add(Conteneur);
 
 
@@ -48,7 +53,7 @@ public class Form_ajoutEmploye extends JFrame implements ActionListener{
         if (e.getSource() == SaveBTN){
             String Nom = txtNom.getText();
             String Prenom = txtPrenom.getText();
-            String Fonction = txtFonction.getText();
+            String Fonction = (String) listeFonction.getSelectedItem();
 
             try{
 
@@ -78,12 +83,16 @@ public class Form_ajoutEmploye extends JFrame implements ActionListener{
                 QueryEmployeStmt.executeUpdate();
                 txtNom.setText("");
                 txtPrenom.setText("");
-                txtFonction.setText("");
+                listeFonction.setSelectedItem("");
                 conn.close();
             }catch(SQLException ex){
                 System.out.println("La connexion à la base de donnée à échouée");
                 System.out.println("Erreur : " + ex.getMessage());
             }
         }
+
+        if(e.getSource() == ClearBTN){
+            setVisible(false);
+        }
     }
-} 
+}
