@@ -50,10 +50,8 @@ public class Form_ajoutSalaire extends JFrame implements ActionListener{
         setVisible(true);
 
         try{
-        String url = "jdbc:mysql://localhost:3306/bibliotheque_bd_ul";
-        String user = "root";
-        String password = "";
-        Connection conn = DriverManager.getConnection(url, user, password);
+        
+        Connection connexion = ConnexionBD.getConnection();
 
         PreparedStatement statement = conn.prepareStatement("Select nom_employe_bibliotheque FROM employe_bibliotheque");
         ResultSet result = statement.executeQuery();
@@ -63,10 +61,7 @@ public class Form_ajoutSalaire extends JFrame implements ActionListener{
             employesComboBox.addItem(employe);
         }
 
-        result.close();
-        statement.close();
-        conn.close();
-
+        
         } catch(SQLException ex){
             System.out.println("La connexion à la base de donnée à échouée");
             System.out.println("Erreur : " + ex.getMessage());

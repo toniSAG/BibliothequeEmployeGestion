@@ -1,4 +1,4 @@
-import java.awt.*;
+/*import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.event.*;
@@ -66,4 +66,4 @@ public class FenetreAcceuil_gestionEmploye extends JFrame implements ActionListe
         }
     
     }
-}
+}*/

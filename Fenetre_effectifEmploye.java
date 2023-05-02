@@ -92,7 +92,7 @@ public class Fenetre_effectifEmploye extends JFrame implements ActionListener{
         }
 
         if(e.getSource() == UpdateBTN){
-            Form_updateEmploye myForm_updateEmploye = new Form_updateEmploye();
+           // Form_updateEmploye myForm_updateEmploye = new Form_updateEmploye();
         }
 
         if(e.getSource() == CloseBTN){
