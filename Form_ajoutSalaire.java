@@ -50,11 +50,10 @@ public class Form_ajoutSalaire extends JFrame implements ActionListener{
         setVisible(true);
 
         try{
-        
-        Connection connexion = ConnexionBD.getConnection();
 
-        PreparedStatement statement = conn.prepareStatement("Select nom_employe_bibliotheque FROM employe_bibliotheque");
-        ResultSet result = statement.executeQuery();
+            Connection connexion = ConnexionBD.getConnection();
+            PreparedStatement statement = connexion.prepareStatement("SELECT nom_employe_bibliotheque FROM employe_bibliotheque");
+            ResultSet result = statement.executeQuery();
 
         while (result.next()){
             Employes employe = new Employes(result.getString("nom_employe_bibliotheque"), result.getString("prenom_employe_bibliotheque"));
@@ -69,8 +68,8 @@ public class Form_ajoutSalaire extends JFrame implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e){
-        /*if(e.getSource() == enregistrerButton){
-            String Nom
-        }*/
+        if(e.getSource() == enregistrerButton){
+            
+        }
     }
 }

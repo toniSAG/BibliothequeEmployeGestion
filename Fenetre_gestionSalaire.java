@@ -1,9 +1,7 @@
-//import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JDateChooser;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-
-
 import java.util.*;
 import java.sql.*;
 

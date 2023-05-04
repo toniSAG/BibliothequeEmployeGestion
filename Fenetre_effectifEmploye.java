@@ -66,7 +66,7 @@ public class Fenetre_effectifEmploye extends JFrame implements ActionListener{
         JPanel ConteneurC = new JPanel();
         ConteneurC.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 15));
 
-        Suppress = new JLabel("Supprimer un(e) employé(é) :");
+        Suppress = new JLabel("Supprimer un(e) employé(e) :");
         ConteneurC.add(Suppress);
         lNom = new JLabel("Nom");
         ConteneurC.add(lNom);

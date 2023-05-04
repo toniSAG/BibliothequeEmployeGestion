@@ -1,8 +1,9 @@
-/*import java.awt.*;
+import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.event.*;
 import java.util.LinkedList;
+import java.sql.*;
 
 public class FenetreAcceuil_gestionEmploye extends JFrame implements ActionListener{
     JButton Employes, Temps, Salaire, CloseBTN;
@@ -66,4 +67,4 @@ public class FenetreAcceuil_gestionEmploye extends JFrame implements ActionListe
         }
     
     }
-}*/
+}
