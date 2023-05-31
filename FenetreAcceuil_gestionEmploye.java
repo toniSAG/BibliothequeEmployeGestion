@@ -6,10 +6,9 @@ import java.util.LinkedList;
 import java.sql.*;
 
 public class FenetreAcceuil_gestionEmploye extends JFrame implements ActionListener{
-    JButton Employes, Temps, Salaire, CloseBTN;
+    JButton Employes, Salaire, CloseBTN;
     JPanel Conteneur;
     private Fenetre_effectifEmploye F1;
-    private Fenetre_gestionTemps F2;
     private Fenetre_gestionSalaire F3;
 
     public FenetreAcceuil_gestionEmploye(){
@@ -24,23 +23,18 @@ public class FenetreAcceuil_gestionEmploye extends JFrame implements ActionListe
         Employes.setBounds(295, 220, 200, 50);
         Employes.addActionListener(this);
 
-        Temps = new JButton("Temps des employés");
-        Temps.setBounds(295, 300, 200, 50);
-        Temps.addActionListener(this);
-
         Salaire = new JButton("Salaire des employés");
-        Salaire.setBounds(295, 380, 200, 50);
+        Salaire.setBounds(295, 300, 200, 50);
         Salaire.addActionListener(this);
 
         CloseBTN = new JButton("Fermer la fenêtre");
-        CloseBTN.setBounds(295, 460, 200, 50);
+        CloseBTN.setBounds(295, 380, 200, 50);
         CloseBTN.addActionListener(this);
 
         Conteneur = new JPanel();
         Conteneur.setLayout(null);
         Conteneur.setBounds(0, 0, 795, 600);
         Conteneur.add(Employes);
-        Conteneur.add(Temps);
         Conteneur.add(Salaire);
         Conteneur.add(CloseBTN);
         add(Conteneur);
@@ -54,10 +48,6 @@ public class FenetreAcceuil_gestionEmploye extends JFrame implements ActionListe
             Fenetre_effectifEmploye maFenetre_effectifEmploye = new Fenetre_effectifEmploye();
         }
     
-        if(i.getSource() == Temps){
-            Fenetre_gestionTemps maFenetre_gestionTemps = new Fenetre_gestionTemps();
-        }
-
         if(i.getSource() == Salaire){
             Fenetre_gestionSalaire maFenetre_gestionSalaire = new Fenetre_gestionSalaire();
         }

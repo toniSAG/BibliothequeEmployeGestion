@@ -35,13 +35,18 @@ public class Fenetre_effectifEmploye extends JFrame implements ActionListener{
         ConteneurA.add(CloseBTN);
 
         try{
+            
         
         String url = "jdbc:mysql://localhost:3306/bibliotheque_bd_ul";
         String user = "root";
         String password = "";
         Connection conn = DriverManager.getConnection(url, user, password);
 
-        String queryEmploye = "SELECT employe_bibliotheque.prenom_employe_bibliotheque AS Prénom, employe_bibliotheque.nom_employe_bibliotheque AS Nom, fonction_employe_bibliotheque.libelle_fonction_employe AS Poste FROM employe_bibliotheque JOIN fonction_employe_bibliotheque ON fonction_employe_bibliotheque.id_fonction_employe = employe_bibliotheque.id_fonction_employe";
+        String queryEmploye = "SELECT employe_bibliotheque.prenom_employe_bibliotheque AS Prénom, employe_bibliotheque.nom_employe_bibliotheque " +
+        "AS Nom, fonction_employe_bibliotheque.libelle_fonction_employe AS Poste " +
+        "FROM employe_bibliotheque " +
+        "JOIN fonction_employe_bibliotheque " +
+        "ON fonction_employe_bibliotheque.id_fonction_employe = employe_bibliotheque.id_fonction_employe";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(queryEmploye);
 
@@ -92,7 +97,7 @@ public class Fenetre_effectifEmploye extends JFrame implements ActionListener{
         }
 
         if(e.getSource() == UpdateBTN){
-           // Form_updateEmploye myForm_updateEmploye = new Form_updateEmploye();
+            Form_updateEmploye myForm_updateEmploye = new Form_updateEmploye();
         }
 
         if(e.getSource() == CloseBTN){

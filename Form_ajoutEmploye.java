@@ -58,15 +58,11 @@ public class Form_ajoutEmploye extends JFrame implements ActionListener{
             try{
 
 
-                String url = "jdbc:mysql://localhost:3306/bibliotheque_bd_ul";
-                String user = "root";
-                String password = "";
-                Connection conn = DriverManager.getConnection(url, user, password);
-
+                Connection connexion = ConnexionBD.getConnection();
                 
 
                 String SelectFunctionID = "SELECT id_fonction_employe FROM fonction_employe_bibliotheque WHERE libelle_fonction_employe =?";
-                PreparedStatement selectFunctionIDStmt = conn.prepareStatement(SelectFunctionID);
+                PreparedStatement selectFunctionIDStmt = connexion.prepareStatement(SelectFunctionID);
                 selectFunctionIDStmt.setString(1, Fonction);
                 ResultSet functionIDResult = selectFunctionIDStmt.executeQuery();
                 int functionID = 0;
@@ -75,7 +71,7 @@ public class Form_ajoutEmploye extends JFrame implements ActionListener{
                 }
 
                 String QueryEmploye = "INSERT INTO employe_bibliotheque (nom_employe_bibliotheque, prenom_employe_bibliotheque, id_fonction_employe) VALUES (?,?,?)";
-                PreparedStatement QueryEmployeStmt = conn.prepareStatement(QueryEmploye);
+                PreparedStatement QueryEmployeStmt = connexion.prepareStatement(QueryEmploye);
                 QueryEmployeStmt.setString(1, Nom);
                 QueryEmployeStmt.setString(2, Prenom);
                 QueryEmployeStmt.setInt(3, functionID);
@@ -84,7 +80,7 @@ public class Form_ajoutEmploye extends JFrame implements ActionListener{
                 txtNom.setText("");
                 txtPrenom.setText("");
                 listeFonction.setSelectedItem("");
-                conn.close();
+                
             }catch(SQLException ex){
                 System.out.println("La connexion à la base de donnée à échouée");
                 System.out.println("Erreur : " + ex.getMessage());
