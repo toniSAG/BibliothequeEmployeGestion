@@ -16,13 +16,14 @@ public class Form_ajoutSalaire extends JFrame implements ActionListener{
     private JComboBox<Double> salaires;
     private JTextField  salaireTextField, datePaiementTextField;
     private JDateChooser datePaiementChooser;
-    private JButton enregistrerButton;
+    private JButton enregistrerButton, closeBTN;
     private Connection conn;
 
     public Form_ajoutSalaire(){
         setTitle("Mettre à jour les salaires");
         setSize(600, 300);
         setLocation(300, 80);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Conteneur = new JPanel();
         Conteneur.setLayout(new GridLayout(5, 2, 10, 10));
@@ -46,8 +47,11 @@ public class Form_ajoutSalaire extends JFrame implements ActionListener{
         Conteneur.add(datePaiementChooser);
         enregistrerButton = new JButton("Enregistrer");
         enregistrerButton.addActionListener(this);
+        closeBTN = new JButton("Fermer la fenêtre");
+        closeBTN.addActionListener(this);
         Conteneur.add(new JLabel());
         Conteneur.add(enregistrerButton);
+        Conteneur.add(closeBTN);
         add(Conteneur);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
@@ -114,6 +118,10 @@ public class Form_ajoutSalaire extends JFrame implements ActionListener{
                 System.out.println("Le connexion à la base de donnée à échouée");
                 System.out.println("Erreur : " + ex.getMessage());
             }
+        }
+
+        if(e.getSource() == closeBTN){
+            setVisible(false);
         }
     }
 }
