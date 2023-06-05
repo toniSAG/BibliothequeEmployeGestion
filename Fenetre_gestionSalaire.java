@@ -8,10 +8,11 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 
 public class Fenetre_gestionSalaire extends JFrame implements ActionListener{
-    JButton FormBTN, CloseBTN;
+    JButton FormBTN, MaxSalaireBTN, CloseBTN;
     JPanel ConteneurA, ConteneurB;
     private JTable tableauSalaire;
     private Form_ajoutSalaire F1;
+    private Fenetre_MaxSalaire F2;
 
     public Fenetre_gestionSalaire(){
         setTitle("Gestionnaire des salaires");
@@ -27,6 +28,10 @@ public class Fenetre_gestionSalaire extends JFrame implements ActionListener{
         FormBTN = new JButton("MAJ salaires");
         FormBTN.addActionListener(this);
         ConteneurA.add(FormBTN);
+
+        MaxSalaireBTN = new JButton("Salaire maximal");
+        MaxSalaireBTN.addActionListener(this);
+        ConteneurA.add(MaxSalaireBTN);
 
         CloseBTN = new JButton("Fermer la fenêtre");
         CloseBTN.addActionListener(this);
@@ -79,6 +84,10 @@ public class Fenetre_gestionSalaire extends JFrame implements ActionListener{
 
         if(e.getSource() == FormBTN){
             Form_ajoutSalaire myForm_ajoutSalaire = new Form_ajoutSalaire();
+        }
+
+        if(e.getSource() == MaxSalaireBTN){
+            Fenetre_MaxSalaire myFenetre_MaxSalaire = new Fenetre_MaxSalaire();
         }
 
         if(e.getSource() == CloseBTN){
